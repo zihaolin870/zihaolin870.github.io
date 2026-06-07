@@ -1,64 +1,334 @@
-
-<html lang="zh-Hant-TW">
+<!DOCTYPE html>
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的個人檔案網站</title>
-    
+    <title>個人檔案 | Portfolio</title>
     <style>
-        body {
-            font-family: "Microsoft JhengHei", sans-serif; 
-            background-color: #f4f7f6; 
-            color: #333333; 
-            margin: 0;
-            padding: 0;
+        /* 更換為方案 A：奶茶雙色漸層視覺 */
+        :root {
+            --bg-color: linear-gradient(135deg, #f8f5f0 0%, #ece5dc 100%); 
+            --card-bg: rgba(255, 255, 255, 0.85); /* 帶有磨砂玻璃感的半透明白 */
+            --primary-text: #3a3630;   
+            --secondary-text: #706a61; 
+            --accent-color: #a38d75;    
+            --border-color: rgba(230, 224, 215, 0.5);    
+            --shadow: 0 8px 32px rgba(140, 125, 108, 0.06); 
         }
 
-        header {
-            background-color: #2c3e50; 
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-color);
+            background-attachment: fixed; /* 讓漸層背景固定，滾動時不破裂 */
+            color: var(--primary-text);
+            line-height: 1.7;
+            padding: 0 20px;
         }
 
         .container {
-            margin: 30px auto; 
-            padding: 20px;
-            background-color: white; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 80px 0;
         }
 
-        .btn {
-            background-color: #e74c3c;
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        nav a {
+            color: var(--secondary-text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        section {
+            margin-bottom: 70px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            color: var(--primary-text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: var(--border-color);
+        }
+
+        #profile {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            margin-bottom: 80px;
+            animation-delay: 0.1s;
+        }
+
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #dfd6c8, #bfae9b); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer; /* 滑鼠移上去變成手型 */
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: var(--shadow);
+            flex-shrink: 0;
+        }
+
+        .intro h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .intro .subtitle {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .intro .bio {
+            color: var(--secondary-text);
+            font-size: 1rem;
+        }
+
+        #skills { animation-delay: 0.3s; }
+        
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            background-color: var(--card-bg);
+            color: var(--secondary-text);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(4px); /* 讓半透明卡片有微磨砂玻璃感 */
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        #projects { animation-delay: 0.5s; }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: #c4b6a5;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+
+        .project-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .project-date {
+            font-size: 0.85rem;
+            color: var(--secondary-text);
+        }
+
+        .project-desc {
+            color: var(--secondary-text);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        #contact { 
+            animation-delay: 0.7s; 
+            margin-bottom: 0;
+        }
+
+        .contact-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.95rem;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            width: 80px;
+            color: var(--accent-color);
+        }
+
+        .contact-item a {
+            color: var(--primary-text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--secondary-text);
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 576px) {
+            body { padding: 0 16px; }
+            .container { padding: 40px 0; }
+            #profile {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            nav {
+                justify-content: center;
+                margin-bottom: 40px;
+            }
+            .project-header {
+                flex-direction: column;
+                gap: 4px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- HTML 內容區：專門負責網頁結構與文字 --> 
-    <!-- 頁首區 -->
-    <header>
-        <h1>林子皓的個人檔案</h1>
-        <p>探索資訊與數位的網頁新手</p>
-        <section class="card">
-    <h2>📚 學習歷程與成果 (Portfolio)</h2>
-    
-    <div class="project-item">
-      <h3>1. 網頁前端開發自主學習</h3>
-      <p>利用每週的自主學習時間，從零開始建構出這個個人基礎 HTML/CSS 網站。</p>
-    </div>
-    
-    <div class="project-item">
-      <h3>2. 課堂專題研究報告</h3>
-      <p>撰寫關於環境議題的小論文，並在期末進行口頭簡報發表。</p>
-    </div>
-  </section>
-    </header>
 
-</body>
-</html>
+    <div class="container">
+        <nav>
+            <a href="#profile"></a>
+            <a href="#skills"></a>
+            <a href="#projects"></a>
+            <a href="#contact"></a>
+        </nav>
+
+        <section id="profile">
+            <div class="avatar">皓</div>
+            <div class="intro">
+                <h1>林子皓</h1>
+                <div class="subtitle">學生</div>
+                <p class="bio">這裡是我自學寫程式，自己製作出來屬於我的個人小網站</p>
+            </div>
+        </section>
+
+        
+        <section id="projects">
+            <h2 class="section-title"></h2>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">種下程式的種子</div>
+                </div>
+                <p class="project-desc">高一的資訊課是我接觸程式的起點。
+                    簡單的程式碼就能在螢幕上畫出複雜的幾何圖形，讓我對程式產生了極大的興趣。</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">自學過程</div>
+                    <div class="project-date"></div>
+                </div>
+                <p class="project-desc">我認為「做中學」是最有效率的學習方式。在 w3schools上自學</p>
+
+            </div>
+                <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">具體成果與反思</div>
+                    <div class="project-date"></div>
+                </div>
+                <p class="project-desc">在開發過程中，我經歷過無數次程式碼崩潰、邏輯打結的挫折。然而，這份經歷鍛鍊了我強烈的求知欲與耐挫力。</p>
+
+            </div>
+        </section>
+
+
+
