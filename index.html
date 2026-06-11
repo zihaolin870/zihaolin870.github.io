@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>個人檔案 | Portfolio</title>
+    <title>林子皓 | 個人檔案</title>
     <style>
-        /* 更換為方案 A：奶茶雙色漸層視覺 */
+        /* 方案 A：奶茶雙色漸層視覺 */
         :root {
             --bg-color: linear-gradient(135deg, #f8f5f0 0%, #ece5dc 100%); 
             --card-bg: rgba(255, 255, 255, 0.85); /* 帶有磨砂玻璃感的半透明白 */
@@ -125,6 +125,10 @@
         .intro .bio {
             color: var(--secondary-text);
             font-size: 1rem;
+        }
+
+        .intro .bio-p {
+            margin-bottom: 8px;
         }
 
         #skills { animation-delay: 0.3s; }
@@ -285,50 +289,83 @@
 
     <div class="container">
         <nav>
-            <a href="#profile"></a>
-            <a href="#skills"></a>
-            <a href="#projects"></a>
-            <a href="#contact"></a>
+            <a href="#profile">關於我</a>
+            <a href="#skills">技能專長</a>
+            <a href="#projects">學習歷程</a>
+            <a href="#contact">聯絡方式</a>
         </nav>
 
         <section id="profile">
             <div class="avatar">皓</div>
             <div class="intro">
                 <h1>林子皓</h1>
-                <div class="subtitle">學生</div>
-                <p class="bio">這裡是我自學寫程式，自己製作出來屬於我的個人小網站</p>
+                <div class="subtitle">學生 / 網頁開發自學者</div>
+                <div class="bio">
+                    <p class="bio-p">哈囉！我是子皓。目前是一邊顧及學業、一邊探索程式世界的自學者。</p>
+                    <p class="bio-p">這裡是我從零開始寫程式，自己製作出來屬於我的個人小網站。</p>
+                    <p class="bio-p">我喜歡把抽象的想法透過程式碼轉化為實體網頁的過程，也熱衷於研究乾淨、好看的介面設計與排版。目前正持續精進前端開發的技能，期待未來能做出更多實用的作品！</p>
+                </div>
             </div>
         </section>
 
+        <section id="skills">
+            <h2 class="section-title">技能專長</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">vscode</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">自學能力</span>
+            </div>
+        </section>
         
         <section id="projects">
-            <h2 class="section-title"></h2>
+            <h2 class="section-title">學習歷程與專案</h2>
             
+            <!-- 第一段：高一啟蒙 -->
             <div class="project-card">
                 <div class="project-header">
                     <div class="project-title">種下程式的種子</div>
+                    <div class="project-date">高一資訊課</div>
                 </div>
-                <p class="project-desc">高一的資訊課是我接觸程式的起點。
-                    簡單的程式碼就能在螢幕上畫出複雜的幾何圖形，讓我對程式產生了極大的興趣。</p>
+                <p class="project-desc">高一的資訊課是我接觸程式的起點。簡單的程式碼就能在螢幕上畫出複雜的幾何圖形，讓我對程式產生了極大的興趣。</p>
             </div>
 
+            <!-- 已新增第二段：深入前端 -->
             <div class="project-card">
                 <div class="project-header">
-                    <div class="project-title">自學過程</div>
-                    <div class="project-date"></div>
+                    <div class="project-title">探索網頁世界</div>
+                    <div class="project-date">自主學習</div>
                 </div>
-                <p class="project-desc">我認為「做中學」是最有效率的學習方式。在 w3schools上自學</p>
-
+                <p class="project-desc">課堂之外，我開始將目光投向每天都會接觸到的網路世界。透過線上教學與技術文章，我著手研究網頁的骨架（HTML5）以及外觀化妝師（CSS3），一步步搞懂網頁是怎麼被搭建出來的。</p>
             </div>
-                <div class="project-card">
-                <div class="project-header">
-                    <div class="project-title">具體成果與反思</div>
-                    <div class="project-date"></div>
-                </div>
-                <p class="project-desc">在開發過程中，我經歷過無數次程式碼崩潰、邏輯打結的挫折。然而，這份經歷鍛鍊了我強烈的求知欲與耐挫力。</p>
 
+            <!-- 已新增第三段：本站專案 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">打造個人專屬網站</div>
+                    <div class="project-date">精進實作</div>
+                </div>
+                <p class="project-desc">為了驗證自學的成果，我著手規劃並編寫了你目前看到的這座個人網站。在實作過程中，我花了很多心思調整現代感十足的「奶茶雙色漸層」和「磨砂玻璃卡片（backdrop-filter）」視覺，並確保網頁不論是在手機還電腦上都有流暢的瀏覽體驗。</p>
             </div>
         </section>
 
+        <section id="contact">
+            <h2 class="section-title">聯絡我</h2>
+ <ul class="contact-list">
+                <li class="contact-item">
+                    <span class="contact-label">Instagram</span>
+                    <a href="https://instagram.com" target="_blank">@jack980112</a>
+                </li>
+                <li class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <a href="mailto:zihaolin870@gmail.com">zihaolin870@gmail.com</a>
+                </li>
+            </ul>
+        </section>
 
+        <footer>
+            <p>&copy; 2026 林子皓. All rights reserved.</p>
+        </footer>
+    </div>
 
+</body>
+</html>
